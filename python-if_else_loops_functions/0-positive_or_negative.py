@@ -8,4 +8,4 @@ elif number == 0:
 else:
     result = 'positive'
 # Qu: when are the curly braces required inside a print statement?
-print(number, ' is ', result)
+print(number, 'is', result)
