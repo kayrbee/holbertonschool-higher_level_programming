@@ -1,3 +1,3 @@
 #!/usr/bin/python3
-def pow(a, b):
-    return a ** b
+for i in range(1, 100):
+    print("{}", ", ", end='')
