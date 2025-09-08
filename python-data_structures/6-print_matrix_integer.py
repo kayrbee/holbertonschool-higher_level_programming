@@ -1,22 +1,32 @@
 #!/usr/bin/python3
+# NB: this is my original solution, which passed the checker
+# def print_matrix_integer(matrix=[[]]):
+#     rows, cols = 0, 0
+#     size = len(matrix)
+#     columns = len(matrix[0])
+#     first_col = 1
+#     if matrix == [[]]:
+#         return print()
+#     while (rows < size):
+#         while (cols < columns):
+#             if not first_col:
+#                 print(" ", end='')
+#             print("{:d}".format(matrix[rows][cols]), end='')
+#             first_col = 0
+#             cols += 1
+#         print()
+#         rows += 1
+#         cols = 0
+#         first_col = 1
+
+# Alternative solution
 def print_matrix_integer(matrix=[[]]):
-    rows, cols = 0, 0
-    size = len(matrix)
-    columns = len(matrix[0])
-    first_col = 1
-    if matrix == [[]]:
-        return print()
-    while (rows < size):
-        while (cols < columns):
-            if not first_col:
+    for row in matrix:
+        for i, val in enumerate(row):
+            if i > 0:
                 print(" ", end='')
-            print("{:d}".format(matrix[rows][cols]), end='')
-            first_col = 0
-            cols += 1
+            print("{:d}".format(val), end='')
         print()
-        rows += 1
-        cols = 0
-        first_col = 1
 
 # Tests
 # matrix = [
