@@ -3,15 +3,20 @@ def print_matrix_integer(matrix=[[]]):
     rows, cols = 0, 0
     size = len(matrix)
     columns = len(matrix[0])
+    first_col = 1
     if matrix == [[]]:
         return print()
     while (rows < size):
         while (cols < columns):
-            print("{:d} ".format(matrix[rows][cols]), end='')
+            if not first_col:
+                print(" ", end='')
+            print("{:d}".format(matrix[rows][cols]), end='')
+            first_col = 0
             cols += 1
         print()
         rows += 1
         cols = 0
+        first_col = 1
 
 # Tests
 # matrix = [
