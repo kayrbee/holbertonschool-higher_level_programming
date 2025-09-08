@@ -4,10 +4,8 @@ def print_matrix_integer(matrix=[[]]):
     if matrix == [[]]:
         return print()
     while (i < len(matrix)):
-        print(matrix[i])
+        print("{}".format(matrix[i]))
         i += 1
-
-# Alternative approaches:
 
 # # Tests
 # matrix = [
