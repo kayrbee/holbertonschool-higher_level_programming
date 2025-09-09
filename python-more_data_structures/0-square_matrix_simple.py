@@ -1,9 +1,8 @@
 #!/usr/bin/python3
 def square_matrix_simple(matrix=[]):
-    new_matrix = [sublist[:] for sublist in matrix]
-    for row in range(len(new_matrix)):
-        for element in range(len(new_matrix[row])):
-            new_matrix[row][element] *= new_matrix[row][element]
+    new_matrix = []
+    for row in matrix:
+        new_matrix.append(list(map(lambda x: x * x, row)))
     return new_matrix
 
 # # Tests
@@ -16,3 +15,10 @@ def square_matrix_simple(matrix=[]):
 # new_matrix = square_matrix_simple(matrix)
 # print(new_matrix)
 # print(matrix)
+
+#  Notes
+#  This code works for a single list
+# def square_matrix_simple(matrix=[]):
+    # new_matrix = [1, 2, 3]
+    # result = list(map(lambda x: x ** 2, new_matrix))
+    # return result
