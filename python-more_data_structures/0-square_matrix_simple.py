@@ -5,7 +5,7 @@ def square_matrix_simple(matrix=[]):
         for element in range(len(new_matrix[row])):
             new_matrix[row][element] *= new_matrix[row][element]
     return new_matrix
-    
+
 # # Tests
 # matrix = [
 #     [1, 2, 3],
