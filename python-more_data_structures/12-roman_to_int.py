@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 def roman_to_int(roman_string):
-    if type(roman_string) is not str or roman_string is None:
+    if not isinstance(roman_string, str):
         return 0
-    sum, i, skip, next_int = 0, 0, 0, 0
+    total, prev_int = 0, 0
     roman_dict = {
         'I': 1,
         'V': 5,
@@ -12,21 +12,15 @@ def roman_to_int(roman_string):
         'D': 500,
         'M': 1000
         }
-    length = len(roman_string)
-    # Reverse the string to simplify the roman modifier logic
-    rev_str = roman_string[::-1]
-    for i in range(length):
-        if skip == 1:  # skip an iteration when roman modifier found
-            skip = 0
-            continue
-        current_int = roman_dict.get(rev_str[i])
-        sum += current_int
-        if i < length - 1:
-            next_int = roman_dict.get(rev_str[i + 1])
-            if current_int > next_int:
-                sum -= next_int
-                skip = 1
-    return sum
+
+    for ch in roman_string:
+        current_int = roman_dict.get(ch, 0)
+        if current_int > prev_int:
+            total += current_int - (2 * prev_int)
+        else:
+                total += current_int
+        prev_int = current_int
+    return total
 
 # # Tests
 # # 10
