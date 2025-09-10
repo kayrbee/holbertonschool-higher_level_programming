@@ -11,9 +11,13 @@ def roman_to_int(roman_string):
         # integer_equivalent += roman_dict.get(roman_string[i])
         current_int = roman_dict.get(roman_string[i])
         # if roman_string[i] == 'I' and roman_string[i + 1] == 'X':
-        if roman_string[i] == 'I':
-            integer_equivalent = roman_dict.get(roman_string[i + 1]) - current_int
-            break
+        if roman_string[i] == 'I' and i < (length - 1):
+            if roman_string[i + 1] == 'X':
+                integer_equivalent = roman_dict.get(roman_string[i + 1]) - current_int
+                break
+            else:
+                integer_equivalent += current_int
+
         else:
             integer_equivalent += roman_dict.get(roman_string[i])
 
