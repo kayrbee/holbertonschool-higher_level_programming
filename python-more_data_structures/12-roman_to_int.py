@@ -6,9 +6,9 @@ def roman_to_int(roman_string):
     # Add dict value
     integer_equivalent = 0
     roman_dict = { 'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000 }
-    # length = len(roman_string)
-    # for i in range(length):
-    integer_equivalent += roman_dict.get(roman_string)
+    length = len(roman_string)
+    for i in range(length):
+        integer_equivalent += roman_dict.get(roman_string[i])
         # print("l: {}".format(length))
         # print("{}".format(roman_dict[roman_string[i]]))
 
@@ -18,8 +18,8 @@ def roman_to_int(roman_string):
 roman_number = "X"
 print("{} = {}".format(roman_number, roman_to_int(roman_number)))
 
-# roman_number = "VII"
-# print("{} = {}".format(roman_number, roman_to_int(roman_number)))
+roman_number = "VII"
+print("{} = {}".format(roman_number, roman_to_int(roman_number)))
 
 # roman_number = "IX"
 # print("{} = {}".format(roman_number, roman_to_int(roman_number)))
