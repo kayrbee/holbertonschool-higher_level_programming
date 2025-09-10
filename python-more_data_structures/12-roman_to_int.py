@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 def roman_to_int(roman_string):
-    if type(roman_string) != str or roman_string is None:
+    if type(roman_string) is not str or roman_string is None:
         return 0
     sum, i, skip, next_int = 0, 0, 0, 0
     roman_dict = {
@@ -16,7 +16,7 @@ def roman_to_int(roman_string):
     # Reverse the string to simplify the roman modifier logic
     rev_str = roman_string[::-1]
     for i in range(length):
-        if skip == 1: #skip an iteration when roman modifier found
+        if skip == 1:  # skip an iteration when roman modifier found
             skip = 0
             continue
         current_int = roman_dict.get(rev_str[i])
