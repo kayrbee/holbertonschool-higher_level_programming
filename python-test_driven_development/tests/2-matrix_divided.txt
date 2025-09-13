@@ -36,8 +36,32 @@ Traceback (most recent call last):
 ...
 TypeError: div must be a number
 
+All rows of matrix must be of equal length
+>>> unequal_matrix = [[1, 2, 3], [4, 5]]
+>>> m_divide(unequal_matrix, 3)
+Traceback (most recent call last):
+...
+TypeError: Each row of the matrix must have the same size
+
+"""
+
+"""
 To do:
 # m_divide(matrix, 2)
 # [[0.5, 1.0, 1.33], [2.0, 2.66, 3.0]]
+
+Matrix must be a list of lists
+# not_matrix = [3, 2, 1]
+# m_divide(not_matrix, 3)
+# Traceback (most recent call last):
+# ...
+# TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+Matrix must contain only numbers
+# mixed_matrix = [["s", 2][2, 1]]
+# m_divide(mixed_matrix, 3)
+# Traceback (most recent call last):
+# ...
+# TypeError: matrix must be a matrix (list of lists) of integers/floats
 
 """
