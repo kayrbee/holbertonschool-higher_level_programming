@@ -19,4 +19,7 @@ def matrix_divided(matrix, div):
     """
     new_matrix = [[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
 
+    if div == 0:
+        raise ZeroDivisionError("division by zero")
+
     return new_matrix

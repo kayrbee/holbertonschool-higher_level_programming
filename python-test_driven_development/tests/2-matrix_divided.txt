@@ -24,4 +24,14 @@ Happy path
 >>> m_divide(matrix, 3)
 [[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
 
+Divide by 0
+>>> m_divide(matrix, 0)
+Traceback (most recent call last):
+...
+ZeroDivisionError: division by zero
+
+To do:
+# m_divide(matrix, 2)
+# [[0.5, 1.0, 1.33], [2.0, 2.66, 3.0]]
+
 """
