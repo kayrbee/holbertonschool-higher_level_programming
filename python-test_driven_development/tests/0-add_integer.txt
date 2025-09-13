@@ -1,0 +1,62 @@
+    """
+    Test the add_integer function. 
+    a and b must be integers or floats, otherwise raise a TypeError
+    a and b must be cast to integers if they are floats
+    returns the integer sum of a and b
+    """
+
+    """
+    Import ``add_integer`` from the ``0-add_integer`` file
+    >>> add = __import__('0-add_integer').add_integer
+
+    Test - Sum of two integers 
+    >>> add(3, 2)
+    5
+
+    Test - sum of two negative integers
+    >>> add(-50, -900)
+    -950
+
+    Test - Sum of two floats
+    >>> add(3.2, 10.1)
+    13
+
+    Test - use default value as b
+    >>> add(98)
+    196
+
+    Test - a is not integer or float
+    >>> add('Best', 98)
+    Traceback (most recent call last):
+    ...
+    TypeError: a must be an integer
+
+    Test - b is not integer or float
+    >>> add(98, 'Best')
+    Traceback (most recent call last):
+    ...
+    TypeError: b must be an integer
+
+    Test - call add() with no parameters
+    >>> add()
+    Traceback (most recent call last):
+    ...
+    TypeError: add_integer() missing 1 required positional argument: 'a'
+
+    Test - call add() with infinite float
+    >>> add(1, float("inf"))
+    Traceback (most recent call last):
+    ...
+    OverflowError: cannot convert float infinity to integer
+
+    Test - call add() with NaN
+    >>> add(1, float("nan"))
+    Traceback (most recent call last):
+    ...
+    ValueError: cannot convert float NaN to integer
+
+    """
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
