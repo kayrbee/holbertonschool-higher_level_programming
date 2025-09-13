@@ -30,6 +30,12 @@ Traceback (most recent call last):
 ...
 ZeroDivisionError: division by zero
 
+Div is not a number
+>>> m_divide(matrix, "0")
+Traceback (most recent call last):
+...
+TypeError: div must be a number
+
 To do:
 # m_divide(matrix, 2)
 # [[0.5, 1.0, 1.33], [2.0, 2.66, 3.0]]
