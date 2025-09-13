@@ -17,7 +17,6 @@ def matrix_divided(matrix, div):
       new matrix containing the results,
       rounded to 2 decimal places
     """
-    new_matrix = [[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
     row_size_check = 0
 
     for row in matrix:
@@ -32,9 +31,15 @@ def matrix_divided(matrix, div):
 
     if type(div) is not int and type(div) is not float:
         raise TypeError("div must be a number")
-    
-    return new_matrix
 
-# matrix = [[1, 2, 3], [4, 5, 6], [7, 8]]
+    for row in matrix:
+        for i in row:
+            if type(i) is not int and type(i) is not float:
+                raise TypeError("matrix must be a matrix (list of lists) of integers/floats")
+    
+    result = [[round(matrix[i][j] / div, 2) for j in range(len(matrix[0]))] for i in range(len(matrix))]
+    return result
+
+# matrix = [[1, 2, 3], ["s", "p", "c"]]
 # res = matrix_divided(matrix, 3)
 # print(res)
