@@ -17,6 +17,9 @@ Import function
 
 Tests
 Happy path
+>>> ti("string to print")
+string to print
+
 >>> ti("string to print.")
 string to print.
 <BLANKLINE>

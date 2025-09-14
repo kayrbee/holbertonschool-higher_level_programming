@@ -29,14 +29,15 @@ def text_indentation(text):
             delimiter = '***'
         split_chunk = [sentence for sentence in text_copy.split(marker)]
         text_copy = delimiter.join(split_chunk)
-    
-    if text_copy[-3:] == '***':
-        length = len(text_copy)
-        text_copy = text_copy[:length - 3]
 
     chunk_to_print = [sentence for sentence in text_copy.split("***")]
     for ch in chunk_to_print:
-        print("{}".format(ch), end='\n\n')
+        if len(chunk_to_print) == 1 and text_copy[-3:] != '***':
+            length = len(text_copy)
+            text_copy = text_copy[:length - 3]
+            print("{}".format(ch), end='')
+        else:
+            print("{}".format(ch), end='\n\n')
 
 # text = "string to print. second string? third string: fourth string?"
 # text = """Lorem ipsum dolor sit amet, consectetur adipiscing elit. \
@@ -48,4 +49,7 @@ def text_indentation(text):
 # stadia confecimus. Sin aliud quid voles, postea. Quae animi affectio suum \
 # cuique tribuens atque hanc, quam dico. Utinam quidem dicerent alium alio \
 # beatiorem! Iam ruinas videres"""
+# text = 'Holberton School'
 # text_indentation(text)
+# text_indentation("Holberton School. 123")
+# text_indentation("Holberton.School")
