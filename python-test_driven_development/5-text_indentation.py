@@ -32,23 +32,17 @@ def text_indentation(text):
     # print(c)
 
     #  strip spaces at start of sentences
-    w_parse = [word for word in c.split('* ')]
+    w_parse = [word for word in c.split('*** ')]
     print("w_parse: ", w_parse)
-    w = "".join(w_parse)
+    w = "***".join(w_parse)
     print("w: ", w)
 
-    chunk = [sentence for sentence in w.split("**")]
-    for ch in chunk:
-        print("{}".format(ch), end='\n\n')
-    # print(c)
+    chunk = [sentence for sentence in w.split("***")]
+    for i, ch in enumerate(chunk):
+        if i < len(chunk) - 1:
+            print("{}".format(ch), end='\n\n')
 
-    # last = len(chunk)
 
-    # for pos, ch in enumerate(p_chunk):
-    #     if pos != last - 1:
-    #         print("{}".format(ch.split('**')), end='.\n\n')
-    #     else:
-    #         print("{}".format(ch), end='\n\n')
 
-text = "string to print. second string? third string!"
+text = "string to print. second string? third string: fourth string?"
 text_indentation(text)
