@@ -14,5 +14,14 @@ class TestMaxInteger(unittest.TestCase):
     def test_max_in_the_middle(self):
         self.assertEqual(max_integer([4, 2, 7, 1, 2]), 7)
 
+    def test_one_negative_number_in_the_list(self):
+        self.assertEqual(max_integer([4, -2, 7, 1]), 7)
+
+    def test_only_negative_numbers_in_the_list(self):
+        self.assertEqual(max_integer([-4, -2, -7, -1]), -1)
+
+    def test_list_of_one_element(self):
+        self.assertEqual(max_integer([17]), 17)
+
     def test_empty_list(self):
         self.assertIsNone(max_integer([]))
