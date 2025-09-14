@@ -12,7 +12,7 @@ Returns a new matrix
 """
 
 """
-Import ``matrix_divided`` from `2-matrix_divided``
+Import ``matrix_divided`` from ``2-matrix_divided``
 >>> m_divide = __import__('2-matrix_divided').matrix_divided
 
 Tests
