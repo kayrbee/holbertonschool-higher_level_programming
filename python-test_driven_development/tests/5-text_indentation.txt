@@ -36,4 +36,10 @@ Traceback (most recent call last):
 ...
 TypeError: text must be a string
 
+text param must be passed in
+>>> ti()
+Traceback (most recent call last):
+...
+TypeError: text_indentation() missing 1 required positional argument: 'text'
+
 """
