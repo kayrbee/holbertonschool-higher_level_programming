@@ -1,0 +1,68 @@
+"""
+Test the print_square function, which
+   prints a square with the character #.
+
+Prototype: def print_square(size):
+
+size is the size length of the square
+  size must be an integer, otherwise
+  raise a TypeError exception with the message
+    "size must be an integer"
+if size is less than 0
+  raise a ValueError exception with the message 
+    "size must be >= 0"
+if size is a float and is less than 0
+  raise a TypeError exception with the message 
+    "size must be an integer"
+"""
+
+
+"""
+Import ``print_square`` from ``4-print_square``
+>>> print_sq = __import__('4-print_square').print_square
+
+Tests
+Happy path
+>>> print_sq(2)
+##
+##
+
+>>> print_sq(4)
+####
+####
+####
+####
+
+>>> print_sq(0)
+
+Size < 0
+>>> print_sq(-2)
+Traceback (most recent call last):
+...
+TypeError: size must be >= 0
+
+String input
+>>> print_sq("4")
+Traceback (most recent call last):
+...
+TypeError: size must be an integer
+
+No input
+>>> print_sq()
+Traceback (most recent call last):
+...
+TypeError: print_square() missing 1 required positional argument: 'size'
+
+nan input
+>>> print_sq(float("nan"))
+Traceback (most recent call last):
+...
+TypeError: size must be an integer
+
+decimal input
+>>> print_sq(3.2)
+Traceback (most recent call last):
+...
+TypeError: size must be an integer
+
+"""
