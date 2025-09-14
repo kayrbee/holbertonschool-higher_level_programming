@@ -31,10 +31,14 @@ def text_indentation(text):
         text_copy = delimiter.join(split_chunk)
 
     chunk_to_print = [sentence for sentence in text_copy.split("***")]
-    for ch in chunk_to_print:
-        if len(chunk_to_print) == 1 and text_copy[-3:] != '***':
-            length = len(text_copy)
-            text_copy = text_copy[:length - 3]
+    last_chunk = len(chunk_to_print) - 1
+
+    if text_copy[-3:] == '***':
+        length = len(text_copy)
+        text_copy = text_copy[:length - 3]
+
+    for i, ch in enumerate(chunk_to_print):
+        if len(chunk_to_print) == 1 or i == last_chunk:
             print("{}".format(ch), end='')
         else:
             print("{}".format(ch), end='\n\n')
@@ -51,5 +55,6 @@ def text_indentation(text):
 # beatiorem! Iam ruinas videres"""
 # text = 'Holberton School'
 # text_indentation(text)
-# text_indentation("Holberton School. 123")
-# text_indentation("Holberton.School")
+# text_indentation("First sentence ends with period. Second sentence doesn't end with a marker")
+# text_indentation("One.School")
+# text_indentation("One.School.")
