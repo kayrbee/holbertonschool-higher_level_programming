@@ -21,6 +21,12 @@ Happy path
 string to print.
 <BLANKLINE>
 
+>>> ti("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quonam modo?")
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+<BLANKLINE>
+Quonam modo?
+<BLANKLINE>
+
 Text must be a string
 >>> ti(234)
 Traceback (most recent call last):

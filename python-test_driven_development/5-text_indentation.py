@@ -16,7 +16,14 @@ def text_indentation(text):
     if type(text) is not str:
         raise TypeError('text must be a string')
 
-    print("{}".format(text), end='\n\n')
+    chunk = [sentence for sentence in text.split(". ")]
+    last = len(chunk)
 
-# text = "string to print."
+    for pos, ch in enumerate(chunk):
+        if pos != last - 1:
+            print("{}".format(ch), end='.\n\n')
+        else:
+            print("{}".format(ch), end='\n\n')
+
+# text = "string to print. second string?"
 # text_indentation(text)
