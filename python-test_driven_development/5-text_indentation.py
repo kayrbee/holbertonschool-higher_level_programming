@@ -38,6 +38,7 @@ def text_indentation(text):
         text_copy = text_copy[:length - 3]
 
     for i, ch in enumerate(chunk_to_print):
+        ch = ch.strip()
         if len(chunk_to_print) == 1 or i == last_chunk:
             print("{}".format(ch), end='')
         else:
@@ -60,3 +61,5 @@ def text_indentation(text):
 # Second sentence doesn't end with a marker")
 # text_indentation("One.School")
 # text_indentation("One.School.")
+# text = 'Holberton. School? How are you:    John'
+# text_indentation(text)
