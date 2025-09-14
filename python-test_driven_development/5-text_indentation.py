@@ -15,34 +15,27 @@ def text_indentation(text):
     """
     if type(text) is not str:
         raise TypeError('text must be a string')
+    
+    markers = ['.', '?', ':', '*** ']
+    text_copy = text[:]
 
-    #  handle periods  
-    p_chunk = [sentence for sentence in text.split(".")]
-    p = ".***".join(p_chunk)
-    # print(p)
+    #   Create a placeholder string with standardised delimiters
+    #   Remove space at sentence boundaries
+    for marker in markers:
+        if marker != '*** ':
+            delimiter = marker + '***'
+        else:
+            delimiter = '***'
+        split_chunk = [sentence for sentence in text_copy.split(marker)]
+        text_copy = delimiter.join(split_chunk)
+    
+    if text_copy[-3:] == '***':
+        length = len(text_copy)
+        text_copy = text_copy[:length - 3]
 
-    #   handle question marks
-    q_chunk = [sentence for sentence in p.split("?")]
-    q = "?***".join(q_chunk)
-    # print(q)
+    chunk_to_print = [sentence for sentence in text_copy.split("***")]
+    for ch in chunk_to_print:
+        print("{}".format(ch), end='\n\n')
 
-    #   handle colons
-    c_chunk = [sentence for sentence in q.split(":")]
-    c = ":***".join(c_chunk)
-    # print(c)
-
-    #  strip spaces at start of sentences
-    w_parse = [word for word in c.split('*** ')]
-    print("w_parse: ", w_parse)
-    w = "***".join(w_parse)
-    print("w: ", w)
-
-    chunk = [sentence for sentence in w.split("***")]
-    for i, ch in enumerate(chunk):
-        if i < len(chunk) - 1:
-            print("{}".format(ch), end='\n\n')
-
-
-
-text = "string to print. second string? third string: fourth string?"
-text_indentation(text)
+# text = "string to print. second string? third string: fourth string?"
+# text_indentation(text)
