@@ -26,10 +26,11 @@ class Rectangle:
 
     def area(self):
         return self.width * self.height
-    
+
     def perimeter(self):
-        return (((self.width + self.height) * 2) if self.width > 0 and self.height > 0 else 0)
-    
+        return (((self.width + self.height) * 2)
+                if self.width > 0 and self.height > 0 else 0)
+
     # Getters
     @property
     def width(self):
