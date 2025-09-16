@@ -7,7 +7,7 @@ Write a class Square that defines a square by:
 Private instance attribute: size:
 property def size(self): to retrieve it
 property setter def size(self, value): to set it:
-size must be an integer, otherwise raise a TypeError 
+size must be an integer, otherwise raise a TypeError
 exception with the message size must be an integer
 if size is less than 0, raise a ValueError exception
  with the message size must be >= 0
@@ -24,7 +24,7 @@ Public instance method: def area(self):
 Public instance method: def my_print(self):
  that prints in stdout the square with the character #:
 if size is equal to 0, print an empty line
-position should be set using space 
+position should be set using space
 - Don’t fill lines by spaces when position[1] > 0
 """
 
@@ -82,14 +82,7 @@ class Square:
     # Setter
     @position.setter
     def position(self, value):
-        # if not isinstance(value, tuple):
-        #     raise TypeError("position must be a tuple of 2 positive integers")
-        # if len(value) != 2:
-        #     raise TypeError("position must be a tuple of 2 positive integers")
-        # if type(value[0]) is not int or type(value[1]) is not int:
-        #     raise TypeError("position must be a tuple of 2 positive integers")
-        # self.__position = value
-        if (not isinstance(value, tuple) or len(value) != 2
-             or not all(isinstance(num, int) and num >= 0 for num in value)):
+        if (not isinstance(value, tuple) or len(value) != 2 or
+                not all(isinstance(num, int) and num >= 0 for num in value)):
             raise TypeError("position must be a tuple of 2 positive integers")
         self.__position = value
