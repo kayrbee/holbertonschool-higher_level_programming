@@ -33,6 +33,8 @@ class Rectangle:
 
     def __str__(self):
         thing_to_print = ""
+        if self.width == 0 or self.height == 0:
+            return thing_to_print
         row = '#' * self.width
         for index, i in enumerate(range(self.height)):
             thing_to_print += row
