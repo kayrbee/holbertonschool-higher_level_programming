@@ -1,0 +1,32 @@
+    """
+    Tests the BaseGeometry class
+    """
+
+    """
+    Import ``Basegeometry class`` from the ``7-base_geometry`` file
+    >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
+    Happy path
+    area method returns 'not implemented' Exception
+    >>> bg = BaseGeometry()
+    >>> bg.area()
+    Traceback (most recent call last):
+    ...
+    Exception: area() is not implemented
+
+    integer validator method validates int value
+    >>> bg.integer_validator("my_int", 12)
+
+    validator method catches strings
+    >>> bg.integer_validator("name", "John")
+    Traceback (most recent call last):
+    ...
+    TypeError: name must be an integer
+
+    validator method catches int <=0 errors
+    >>> bg.integer_validator("age", 0)
+    Traceback (most recent call last):
+    ...
+    ValueError: age must be greater than 0
+
+    """
