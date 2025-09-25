@@ -29,7 +29,7 @@ class VerboseList(list):
     def pop(self, index=-1):
         self.index_validator(index)
         print("Popped [{}] from the list.".format(self[index]))
-        return super().pop(item)
+        return super().pop(index)
 
     def index_validator(self, index):
         if not isinstance(index, int):
