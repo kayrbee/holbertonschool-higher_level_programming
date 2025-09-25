@@ -13,4 +13,17 @@ class CountedIterator:
 
     Overrides __next__() with a counter
     """
-    pass
+    def __init__(self, data):
+        self.data = data
+        self.length = len(data)
+        self.iterator = iter(data)
+        self.__counter = 0
+
+    def get_count(self):
+        return self.__counter
+
+    def __next__(self):
+        if self.__counter == self.length:
+            raise StopIteration
+        self.__counter += 1
+        return self.data[self.__counter - 1]
