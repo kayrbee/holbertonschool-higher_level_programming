@@ -29,16 +29,16 @@ class Circle(Shape):
     pi = 3.141592653589793
 
     def __init__(self, radius):
-        if radius >= 0:
-            self.__radius = radius
-        else:
-            self.__radius = 0
+        self.__radius = radius
     
     def area(self):
         return (self.__class__.pi * self.__radius ** 2)
     
     def perimeter(self):
-        return (2 * self.__class__.pi * self.__radius)
+        if self.__radius >= 0:
+            return (2 * self.__class__.pi * self.__radius)
+        else:
+            raise ValueError("Perimeter result is negative")
 
 
 
