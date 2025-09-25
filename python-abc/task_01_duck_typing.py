@@ -29,7 +29,10 @@ class Circle(Shape):
     pi = 3.141592653589793
 
     def __init__(self, radius):
-        self.__radius = radius
+        if radius >= 0:
+            self.__radius = radius
+        else:
+            self.__radius = 0
     
     def area(self):
         return (self.__class__.pi * self.__radius ** 2)
