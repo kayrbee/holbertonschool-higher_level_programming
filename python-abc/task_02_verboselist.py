@@ -26,10 +26,8 @@ class VerboseList(list):
         else:
             print("Item not found")
 
-    def pop(self, item=None):
+    def pop(self, index=-1):
         self.index_validator(index)
-        if index is None:
-            index = len(self) - 1
         print("Popped [{}] from the list.".format(self[index]))
         return super().pop(item)
 
