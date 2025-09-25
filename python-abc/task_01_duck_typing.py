@@ -35,10 +35,11 @@ class Circle(Shape):
         return (self.__class__.pi * self.__radius ** 2)
     
     def perimeter(self):
+        # Force positive result if radius is < 0
         if self.__radius >= 0:
             return (2 * self.__class__.pi * self.__radius)
         else:
-            raise ValueError("Perimeter result is negative")
+            return (2 * self.__class__.pi * (-1 * self.__radius))
 
 
 
