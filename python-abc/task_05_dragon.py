@@ -6,10 +6,13 @@ Module contains a class which
 
 
 class SwimMixin:
-    pass
+    def swim(self):
+        print("The creature swims!")
 
 class FlyMixin:
-    pass
+    def fly(self):
+        print("The creature flies!")
 
 class Dragon(SwimMixin, FlyMixin):
-    pass
+    def roar(self):
+        print("The dragon roars!")
