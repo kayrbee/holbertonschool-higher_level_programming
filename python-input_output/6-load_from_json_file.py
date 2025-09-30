@@ -16,4 +16,5 @@ def load_from_json_file(filename):
     You don’t need to manage file permission exceptions.
     """
     with open(filename, "r", encoding="utf-8") as f:
-        return json.loads(f)
+        json_string = f.read()
+        return json.loads(json_string)
