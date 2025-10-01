@@ -9,29 +9,19 @@ def pascal_triangle(n):
     # if n <= 0 or n is not isinstance(n, int):
     if n <= 0:
         return triangle
+    last_row = []
 
     # Control row creation
-    for row in range(n):
+    for row_index in range(n):
         row_list = []
-        i = row + 1
-        if row == 0:
-            row_list.append(1)
-            triangle.append(row_list)
-        elif row == 1:
-            row_list = [1, 1]
-            triangle.append(row_list)           
+        row = row_index + 1
         # Control row size
-        else:
-            for index in range(i):
-                start_val, next_value = 1, 1
-                if index == 0:
-                    row_list.append(start_val)
-                elif index == 1:
-                    next_value += start_val
-                    row_list.append(next_value)
-                else:
-                    row_list.append(start_val)
+        for index in range(row):
+            if index == 0 or index == row_index:
+                row_list.append(1)
+            else:
+                row_list.append(last_row[index] + last_row[index - 1])
+        triangle.append(row_list)
+        last_row = row_list
 
-            triangle.append(row_list)
-    
     return triangle

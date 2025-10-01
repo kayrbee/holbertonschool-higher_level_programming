@@ -2,7 +2,7 @@
 """
 12-main
 """
-pascal_triangle = __import__('12-pascal_triangle').pascal_triangle
+pascal_triangle = __import__('12-pascal_triangle_copy').pascal_triangle
 
 def print_triangle(triangle):
     """
@@ -13,4 +13,4 @@ def print_triangle(triangle):
 
 
 if __name__ == "__main__":
-    print_triangle(pascal_triangle(3))
+    print_triangle(pascal_triangle(10))
