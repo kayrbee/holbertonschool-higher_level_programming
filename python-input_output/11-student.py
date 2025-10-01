@@ -40,7 +40,11 @@ class Student:
             return filtered_attrs
 
     def reload_from_json(self, json):
-        if len(json) > 0:
+        if not json or not isinstance(json, dict):
+            return
+        if "first_name" in json:
             self.first_name = json["first_name"]
+        if "last_name" in json:
             self.last_name = json["last_name"]
+        if "age" in json:
             self.age = json["age"]
