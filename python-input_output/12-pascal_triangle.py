@@ -4,7 +4,11 @@ Create Pascal's Triangle
 as a list of lists
 """
 
+
 def pascal_triangle(n):
+    """
+    Fancy documentation goes here
+    """
     triangle = []
     # if n <= 0 or n is not isinstance(n, int):
     if n <= 0:
