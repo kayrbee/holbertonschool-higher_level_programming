@@ -7,6 +7,4 @@ integer and boolean) for JSON serialization of an object
 
 
 def class_to_json(obj):
-    # # Get a string of object
-    new_dict = {'name': obj.name, 'number': obj.number}
-    return new_dict
+    return vars(obj)
