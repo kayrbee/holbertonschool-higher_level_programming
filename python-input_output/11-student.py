@@ -38,7 +38,7 @@ class Student:
                 else:
                     continue
             return filtered_attrs
-    
+
     def reload_from_json(self, json):
         self.first_name = json["first_name"]
         self.last_name = json["last_name"]
