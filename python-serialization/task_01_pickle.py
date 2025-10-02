@@ -23,10 +23,33 @@ class CustomObject:
             print("{}: {}".format(key, self.__dict__[key]))
 
     def serialize(self, filename):
-        with open(filename, "wb") as file:
-            pickle.dump(self, file)
+        if not filename:
+            return None
+        try:
+            with open(filename, "wb") as file:
+                pickle.dump(self, file)
+                return True
+        except (pickle.PicklingError, TypeError, AttributeError) as e:
+            print(f"[Serialisation Error] Failed to serialise object: {e}")
+        except (IOError, OSError) as e:
+            print(f"[Serialisation Error] file error with '{filename}'")
 
     @classmethod
     def deserialize(cls, filename):
-        with open(filename, "rb") as file:
-            return pickle.load(file)
+        if not filename:
+            return None
+        try:
+            with open(filename, "rb") as file:
+                obj = pickle.load(file)
+                if not isinstance(obj, cls):
+                    raise TypeError("Deserialised object is \
+                                    not of type {cls.__name__}")
+                return obj
+        except (pickle.UnpicklingError, EOFError, TypeError, AttributeError) as e:
+            print(f"[Deserialisation Error] Malformed \
+                  file '{filename}': {e}")
+            return None
+        except FileNotFoundError:
+            print(f"[Deserialisation Error] File not found: \
+                  '{filename}'")
+            return None
