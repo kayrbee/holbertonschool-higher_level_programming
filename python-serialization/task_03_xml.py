@@ -14,10 +14,6 @@ def serialize_to_xml(dictionary, filename):
     if not filename:
         print("filename not provided")
         return False
-    
-    # if not dictionary:
-    #     print("warning: dictionary is empty, nothing to convert")
-    #     return False
 
     try:
         root = ET.Element("data")
@@ -33,7 +29,6 @@ def serialize_to_xml(dictionary, filename):
         return False
     
 def deserialize_from_xml(filename):
-    # try:
     tree = ET.parse(filename)
     root = tree.getroot()
 
@@ -41,6 +36,3 @@ def deserialize_from_xml(filename):
     for child in root:
         data[child.tag] = child.text
     return data
-    # except (Exception) as e:
-    #     print(f"Deserialisation error {e}")
-    #     return {}
