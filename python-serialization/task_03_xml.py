@@ -37,7 +37,7 @@ def deserialize_from_xml(filename):
         data = {}
         for child in root:
             data[child.tag] = child.text
-        data["age"] = int(data["age"])
+        # data["age"] = int(data["age"])
         return data
     except Exception as e:
         print(f"Deserialisation error {e}")
