@@ -16,7 +16,7 @@ def serialize_to_xml(dictionary, filename):
         return False
 
     try:
-        root = ET.Element("root")
+        root = ET.Element("data")
 
         for key, value in dictionary.items():
             child = ET.SubElement(root, key)
