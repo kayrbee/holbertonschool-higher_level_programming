@@ -12,7 +12,7 @@ def serialize_to_xml(dictionary, filename):
     Convert a dict object to xml file
     """
     if not dictionary or not filename:
-        print(f"[XML Conversion] dict or filename not provided")
+        print(f"[XML Conversion] filename not provided")
         return False
 
     try:
@@ -27,7 +27,7 @@ def serialize_to_xml(dictionary, filename):
     except (ET.ParseError, TypeError, AttributeError) as e:
         print(e)
     except FileNotFoundError as e:
-        pass
+        print(f"File not found: {e}")
     
 def deserialize_from_xml(filename):
     try:
@@ -39,5 +39,6 @@ def deserialize_from_xml(filename):
             data[child.tag] = child.text
         # data["age"] = int(data["age"])
         return data
-    except Exception as e:
+    except (Exception, FileNotFoundError) as e:
         print(f"Deserialisation error {e}")
+        return {}
