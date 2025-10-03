@@ -5,14 +5,19 @@ Use xml module to convert to/from xml
 
 
 import xml.etree.ElementTree as ET
+import os
 
 
 def serialize_to_xml(dictionary, filename):
     """
     Convert a dict object to xml file
     """
-    if not dictionary or not filename:
-        print(f"[XML Conversion] filename not provided")
+    if not filename:
+        print("filename not provided")
+        return False
+    
+    if not dictionary:
+        print("warning: dictionary is empty, nothing to convert")
         return False
 
     try:
@@ -30,6 +35,10 @@ def serialize_to_xml(dictionary, filename):
         print(f"File not found: {e}")
     
 def deserialize_from_xml(filename):
+    if not os.path.exists(filename):
+        print(f"[XML Conversion] Error: File '{filename}' does not exist.")
+        return {}
+    
     try:
         tree = ET.parse(filename)
         root = tree.getroot()
