@@ -29,15 +29,15 @@ def serialize_to_xml(dictionary, filename):
 
         tree = ET.ElementTree(root)
         tree.write(filename, encoding="utf-8", xml_declaration=True)
-    except (ET.ParseError, TypeError, AttributeError) as e:
+        return True
+    except Exception as e:
         print(e)
-    except FileNotFoundError as e:
-        print(f"File not found: {e}")
+        return False
     
 def deserialize_from_xml(filename):
     if not os.path.exists(filename):
         print(f"[XML Conversion] Error: File '{filename}' does not exist.")
-        return {}
+        return False
     
     try:
         tree = ET.parse(filename)
@@ -48,6 +48,6 @@ def deserialize_from_xml(filename):
             data[child.tag] = child.text
         # data["age"] = int(data["age"])
         return data
-    except (Exception, FileNotFoundError) as e:
+    except (Exception) as e:
         print(f"Deserialisation error {e}")
         return {}
