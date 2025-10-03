@@ -35,3 +35,4 @@ def convert_csv_to_json(csv_filename):
         return False
     except FileNotFoundError as e:
         print(f"[CSV Conversion] File not found: {e}")
+        return False
