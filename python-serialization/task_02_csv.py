@@ -30,6 +30,8 @@ def convert_csv_to_json(csv_filename):
             #     json.dump(data_list, jf)
             json.dump(data_list, jf)
         return True
-    except Exception as e:
-        print(f"[CSV Conversion] Exception occurred: {e}")
+    except (csv.Error, TypeError, AttributeError) as e:
+        print(f"[CSV Conversion] Failed to convert data: {e}")
         return False
+    except FileNotFoundError as e:
+        print(f"[CSV Conversion] File not found: {e}")
