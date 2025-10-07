@@ -7,8 +7,15 @@ import requests
 def fetch_and_print_posts():
     posts = requests.get('https://jsonplaceholder.typicode.com/posts')
     print("Status code: {}".format(posts.status_code))
-    if posts.status_code >= 200 and posts.status_code < 300:
-        posts_json = posts.json()
-        for post in posts_json:
-            print(post["title"])
+    if posts.status_code == requests.codes.ok:
+        try:
+            posts_json = posts.json()
+            for post in posts_json:
+                print(post["title"])
+        except Exception as e:
+            print(f"Exception occurred: {e}")
+    else:
+        posts.raise_for_status()
+
+
 # Fetch and save posts to csv file
