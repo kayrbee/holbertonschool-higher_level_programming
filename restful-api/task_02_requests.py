@@ -7,7 +7,7 @@ import csv
 # Fetch posts from JSONPlaceholder
 def fetch_and_print_posts():
     posts = requests.get('https://jsonplaceholder.typicode.com/posts')
-    print(posts.status_code)
+    status = f"Status Code: {posts.status_code}"
     if posts.status_code == requests.codes.ok:
         try:
             posts_json = posts.json()
@@ -17,6 +17,7 @@ def fetch_and_print_posts():
             print(f"Exception occurred: {e}")
     else:
         posts.raise_for_status()
+    return status
 
 
 # Fetch and save posts to csv file
@@ -32,4 +33,4 @@ def fetch_and_save_posts():
             for post in posts_json:
                 writer.writerow(post)
 
-fetch_and_print_posts()
+fetch_and_print_posts
