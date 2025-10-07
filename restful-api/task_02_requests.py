@@ -4,8 +4,10 @@ import requests
 
 
 # Fetch posts from JSONPlaceholder
-p = requests.get('https://jsonplaceholder.typicode.com/posts')
-print("Status code: {}".format(p.status_code))
-if p.status_code >= 200 and p.status_code < 300:
-    print(p.json())
+posts = requests.get('https://jsonplaceholder.typicode.com/posts')
+print("Status code: {}".format(posts.status_code))
+if posts.status_code >= 200 and posts.status_code < 300:
+    posts_json = posts.json()
+    for post in posts_json:
+        print(post["title"])
 # Fetch and save posts to csv file
