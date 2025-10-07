@@ -29,9 +29,7 @@ def fetch_and_save_posts():
         fields = posts_json[0].keys()
 
         with open("posts.csv", "w", encoding="utf-8", newline="") as file:
-            writer = csv.DictWriter(file, fieldnames=fields)
+            writer = csv.DictWriter(file, fieldnames=fields, quotechar="'", quoting=csv.QUOTE_ALL)
             writer.writeheader()
             for post in posts_json:
                 writer.writerow(post)
-
-fetch_and_print_posts
