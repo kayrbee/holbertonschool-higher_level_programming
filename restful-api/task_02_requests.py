@@ -23,24 +23,14 @@ def fetch_and_print_posts():
 # Fetch and save posts to csv file
 def fetch_and_save_posts():
     if posts.status_code == requests.codes.ok:
-        dl = []
         posts_json = posts.json()
-        try:
-            for post in posts_json:
-                dl.append(post)
-        except Exception as e:
-            print(f"Exception occurred: {e}")
-        fields = dl[0].keys()
+        fields = posts_json[0].keys()
 
-        with open("posts.csv", "w", encoding="utf-8") as file:
-                writer = csv.DictWriter(file, fields)
+        with open("posts.csv", "w", encoding="utf-8", newline="") as file:
+                writer = csv.DictWriter(file, fieldnames=fields)
                 writer.writeheader()
-                for item in dl:
-                    print("Dict:", item, "Type: ", type(item))
-                    d = item.items()
-                    print("d: ", d, "type: ", type(d))
-                    for key, value in d:
-                        writer.writerow([key, value])
+                for post in posts_json:
+                        writer.writerow(post)
 
 # fetch_and_print_posts()
 fetch_and_save_posts()
