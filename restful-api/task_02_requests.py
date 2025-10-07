@@ -6,6 +6,7 @@ import csv
 
 posts = requests.get('https://jsonplaceholder.typicode.com/posts')
 
+
 # Fetch posts from JSONPlaceholder
 def fetch_and_print_posts():
     print("Status code: {}".format(posts.status_code))
@@ -27,10 +28,7 @@ def fetch_and_save_posts():
         fields = posts_json[0].keys()
 
         with open("posts.csv", "w", encoding="utf-8", newline="") as file:
-                writer = csv.DictWriter(file, fieldnames=fields)
-                writer.writeheader()
-                for post in posts_json:
-                        writer.writerow(post)
-
-# fetch_and_print_posts()
-fetch_and_save_posts()
+            writer = csv.DictWriter(file, fieldnames=fields)
+            writer.writeheader()
+            for post in posts_json:
+                writer.writerow(post)
