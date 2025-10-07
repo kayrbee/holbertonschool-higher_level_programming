@@ -7,7 +7,7 @@ import csv
 # Fetch posts from JSONPlaceholder
 def fetch_and_print_posts():
     posts = requests.get('https://jsonplaceholder.typicode.com/posts')
-    status = "Status Code: 200"
+    status = "Status Code: {}".format(posts.status_code)
     if posts.status_code == requests.codes.ok:
         try:
             posts_json = posts.json()
