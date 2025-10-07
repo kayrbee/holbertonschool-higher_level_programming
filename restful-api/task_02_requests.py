@@ -4,11 +4,9 @@ import requests
 import csv
 
 
-posts = requests.get('https://jsonplaceholder.typicode.com/posts')
-
-
 # Fetch posts from JSONPlaceholder
 def fetch_and_print_posts():
+    posts = requests.get('https://jsonplaceholder.typicode.com/posts')
     print("Status code: {}".format(posts.status_code))
     if posts.status_code == requests.codes.ok:
         try:
@@ -23,6 +21,7 @@ def fetch_and_print_posts():
 
 # Fetch and save posts to csv file
 def fetch_and_save_posts():
+    posts = requests.get('https://jsonplaceholder.typicode.com/posts')
     if posts.status_code == requests.codes.ok:
         posts_json = posts.json()
         fields = posts_json[0].keys()
