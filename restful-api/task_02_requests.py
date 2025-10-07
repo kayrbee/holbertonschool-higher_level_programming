@@ -26,6 +26,8 @@ def fetch_and_save_posts():
     posts = requests.get('https://jsonplaceholder.typicode.com/posts')
     if posts.status_code == requests.codes.ok:
         posts_json = posts.json()
+        for post in posts_json:
+            del post["userId"]
         fields = posts_json[0].keys()
 
         with open("posts.csv", "w", encoding="utf-8", newline="") as file:
