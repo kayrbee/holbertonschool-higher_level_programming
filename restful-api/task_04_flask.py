@@ -1,9 +1,11 @@
 #!/usr/bin/python3
 from flask import Flask
-import json
 
 app = Flask(__name__)
 
 @app.route("/")
-def hello_world():
-    return "<p>Hello, World!</p>"
+def home():
+    return "Welcome to the Flask API!"
+
+# Run server
+if __name__ == "__main__": app.run()
