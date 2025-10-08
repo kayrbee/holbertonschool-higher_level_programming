@@ -64,7 +64,10 @@ def add_user():
 
     for field in required_fields:
         if field not in new_user:
-            return jsonify({"error": f"{field} is required"}), 400
+            if field == "username":
+                return jsonify({"error": f"Username is required"}), 400
+            else:
+                return jsonify({"error": f"{field} is required"}), 400
 
     username = new_user["username"]
 
