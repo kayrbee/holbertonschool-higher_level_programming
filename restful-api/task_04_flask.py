@@ -6,21 +6,21 @@ from flask import request
 app = Flask(__name__)
 
 users = {}
-# For testing
-users = {
-    "jane":
-    {"username": "jane",
-     "name": "Jane",
-     "age": 28,
-     "city": "Los Angeles"
-     },
-    "john":
-    {"username": "john",
-     "name": "John",
-     "age": 30,
-     "city": "New York"
-     }
-}
+# # For testing
+# users = {
+#     "jane":
+#     {"username": "jane",
+#      "name": "Jane",
+#      "age": 28,
+#      "city": "Los Angeles"
+#      },
+#     "john":
+#     {"username": "john",
+#      "name": "John",
+#      "age": 30,
+#      "city": "New York"
+#      }
+# }
 
 
 @app.route("/")
@@ -64,7 +64,7 @@ def add_user():
 
     for field in required_fields:
         if field not in new_user:
-            return jsonify({"error": f"Missing field: {field}"}), 400
+            return jsonify({"error": f"{field} is required"}), 400
 
     username = new_user["username"]
 
