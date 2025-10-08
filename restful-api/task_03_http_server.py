@@ -6,6 +6,7 @@ import json
 
 PORT = 8000
 data = {"name": "John", "age": 30, "city": "New York"}
+info = {"version": "1.0", "description": "A simple API built with http.server"}
 
 class MyHandler(http.server.BaseHTTPRequestHandler):
     def do_GET(self):
@@ -18,13 +19,19 @@ class MyHandler(http.server.BaseHTTPRequestHandler):
             self.send_response(200)
             self.send_header("Content-type", "application/json")
             self.end_headers()
-            json_string = json.dumps(data)
-            self.wfile.write(json_string.encode("utf-8"))  # NB: must be binary string
+            json_data = json.dumps(data)
+            self.wfile.write(json_data.encode("utf-8"))
+        elif self.path == "/info":
+            self.send_response(200)
+            self.send_header("Content-type", "application/json")
+            self.end_headers()
+            json_info = json.dumps(info)
+            self.wfile.write(json_info.encode("utf-8"))
         else:
             self.send_error(404)
             self.send_header("Content-type", "text/plain")
             self.end_headers()
-            self.wfile.write(b"404 Page Not Found")  # NB: must be binary string
+            self.wfile.write(b"404 Page Not Found")
 
 # Start the server
 with socketserver.TCPServer(("", PORT), MyHandler) as httpd:
