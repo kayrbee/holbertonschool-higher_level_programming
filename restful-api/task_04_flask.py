@@ -13,9 +13,9 @@ def home():
 @app.route("/data")
 def data():
     names = []
-    for user in users:
-        name = user["name"]
-        names.append(name)
+    user_keys = users.keys()
+    for key in user_keys:
+        names.append(users[key]["name"])
     return jsonify(names)
 
 # Run server
