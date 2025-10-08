@@ -4,7 +4,7 @@ from flask import jsonify
 
 app = Flask(__name__)
 
-users = {"jane": {"name": "Jane", "age": 28, "city": "Los Angeles"}}
+users = {}
 
 @app.route("/")
 def home():
@@ -12,11 +12,8 @@ def home():
 
 @app.route("/data")
 def data():
-    names = []
-    user_keys = users.keys()
-    for key in user_keys:
-        names.append(users[key]["name"])
-    return jsonify(names)
+    usernames = list(users.keys())
+    return jsonify(usernames)
 
 # Run server
 if __name__ == "__main__": 
