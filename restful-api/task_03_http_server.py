@@ -28,15 +28,14 @@ class MyHandler(http.server.BaseHTTPRequestHandler):
             json_info = json.dumps(info)
             self.wfile.write(json_info.encode("utf-8"))
         elif self.path == "/status":
-            self.send_response(200)
+            self.send_response(200, "OK")
             self.send_header("Content-type", "text/plain")
             self.end_headers()
-            self.wfile.write(b"200 OK")            
+            self.wfile.write(b"OK")
         else:
-            self.send_error(404)
+            self.send_error(404, "Endpoint not found")
             self.send_header("Content-type", "text/plain")
             self.end_headers()
-            self.wfile.write(b"404 Page Not Found")
 
 # Start the server
 with socketserver.TCPServer(("", PORT), MyHandler) as httpd:
