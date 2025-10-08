@@ -77,7 +77,7 @@ def add_user():
         "age": new_user["age"],
         "city": new_user["city"]
     }
-    return jsonify({"message": "User added successfully"}), 201
+    return jsonify({"message": "User added", "user": new_user}), 201
 
 
 # Run server
