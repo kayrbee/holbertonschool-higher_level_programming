@@ -53,6 +53,33 @@ def user(username):
         return jsonify(error), 404
 
 
+@app.route("/add_user", methods=['POST'])
+def add_user():
+    new_user = request.get_json()
+
+    if not new_user:
+        return jsonify({"Error": "Missing JSON body"}), 400
+
+    required_fields = ["username", "name", "age", "city"]
+
+    for field in required_fields:
+        if field not in new_user:
+            return jsonify({"error": f"Missing field: {field}"}), 400
+
+    username = new_user["username"]
+
+    if username in users:
+        return jsonify({"Error": "User already exists"}), 409
+
+    users[username] = {
+        "username": username,
+        "name": new_user["name"],
+        "age": new_user["age"],
+        "city": new_user["city"]
+    }
+    return jsonify({"message": "User added successfully"}), 201
+
+
 # Run server
 if __name__ == "__main__":
     app.run()
