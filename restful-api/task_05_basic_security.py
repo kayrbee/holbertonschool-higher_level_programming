@@ -9,24 +9,29 @@ from flask_jwt_extended import create_access_token
 from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
 from flask_jwt_extended import JWTManager
-# import os
-# from dotenv import load_dotenv
-
-# load_dotenv()
 
 
 app = Flask(__name__)
 auth = HTTPBasicAuth()
 app.config["JWT_SECRET_KEY"] = "my-demo-key"
-# app.config["JWT_SECRET_KEY"] = os.getenv('JWT_SECRET_KEY')
 jwt = JWTManager(app)
 
-users = {}
-# For testing
-# users = {"user1": {"username": "user1", "password": generate_password_hash(os.getenv('USER_PW')), "role": "user"},
-#          "admin1": {"username": "admin1", "password": generate_password_hash(os.getenv('ADMIN_PW')), "role": "admin"}}
+# Demo data
+users = {
+    "user1": {
+        "username": "user1",
+        "password": generate_password_hash("password"),
+        "role": "user"
+    },
+    "admin1": {
+        "username": "admin1",
+        "password": generate_password_hash("password"),
+        "role": "admin"
+    }
+}
 
 
+# Implements basic auth
 @auth.verify_password
 def verify_password(username, password):
     user = users.get(username)
@@ -40,6 +45,8 @@ def verify_password(username, password):
 def home():
     return "Basic Auth: Access Granted"
 
+# Implements JWT auth
+
 
 @app.route("/login", methods=["POST"])
 def login():
@@ -52,6 +59,7 @@ def login():
     return jsonify(access_token=access_token)
 
 
+# Error handling
 @jwt.unauthorized_loader
 def handle_unauthorized_error(err):
     return jsonify({"error": "Missing or invalid token"}), 401
