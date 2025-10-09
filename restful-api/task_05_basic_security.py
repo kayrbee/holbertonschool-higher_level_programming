@@ -18,7 +18,6 @@ load_dotenv()
 app = Flask(__name__)
 auth = HTTPBasicAuth()
 app.config["JWT_SECRET_KEY"] = os.getenv('JWT_SECRET_KEY')
-# app.config["JWT_SECRET_KEY"] = "secret-key"
 jwt = JWTManager(app)
 
 
