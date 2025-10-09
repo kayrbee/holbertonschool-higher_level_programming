@@ -9,20 +9,22 @@ from flask_jwt_extended import create_access_token
 from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
 from flask_jwt_extended import JWTManager
-import os
-from dotenv import load_dotenv
+# import os
+# from dotenv import load_dotenv
 
-load_dotenv()
+# load_dotenv()
 
 
 app = Flask(__name__)
 auth = HTTPBasicAuth()
-app.config["JWT_SECRET_KEY"] = os.getenv('JWT_SECRET_KEY')
+app.config["JWT_SECRET_KEY"] = "my-demo-key"
+# app.config["JWT_SECRET_KEY"] = os.getenv('JWT_SECRET_KEY')
 jwt = JWTManager(app)
 
-
-users = {"user1": {"username": "user1", "password": generate_password_hash(os.getenv('USER_PW')), "role": "user"},
-         "admin1": {"username": "admin1", "password": generate_password_hash(os.getenv('ADMIN_PW')), "role": "admin"}}
+users = {}
+# For testing
+# users = {"user1": {"username": "user1", "password": generate_password_hash(os.getenv('USER_PW')), "role": "user"},
+#          "admin1": {"username": "admin1", "password": generate_password_hash(os.getenv('ADMIN_PW')), "role": "admin"}}
 
 
 @auth.verify_password
