@@ -71,9 +71,6 @@ def add_user():
 
     username = new_user["username"]
 
-    # if username in users:
-    #     return jsonify({"Error": "User already exists"}), 409
-
     users[username] = {
         "username": username,
         "name": new_user["name"],
