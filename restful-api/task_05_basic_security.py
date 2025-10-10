@@ -96,7 +96,7 @@ def handle_needs_fresh_token_error(err):
 @app.route("/jwt-protected", methods=["GET"])
 @jwt_required()
 def jwt_protected():
-    return jsonify({"message": "JWT Auth: Access Granted"}), 200
+    return "JWT Auth: Access Granted"
 
 
 @app.route("/admin-only")
@@ -106,7 +106,7 @@ def admin_only():
     if current_user.get("role") != "admin":
         return jsonify({"error": "Admin access required"}), 403
 
-    return jsonify({"message": "Admin Access: Granted"})
+    return "Admin Access: Granted"
 
 
 # Run server
