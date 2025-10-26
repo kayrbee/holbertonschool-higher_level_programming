@@ -23,7 +23,6 @@ if __name__ == '__main__':
     username = sys.argv[1]
     passwd = sys.argv[2]
     db_name = sys.argv[3]
-    state_name = sys.argv[4]
 
     engine = create_engine(
         f"mysql+mysqldb://{username}:{passwd}@localhost:3306/{db_name}"
@@ -32,7 +31,7 @@ if __name__ == '__main__':
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    new_state = State(name=state_name)
+    new_state = State(name="Louisiana")
 
     state = session.add(new_state)
     session.commit()
