@@ -23,7 +23,7 @@ if __name__ == '__main__':
                          passwd=password, database=database, port=3306)
     cur = db.cursor()
 
-    cur.execute("SELECT * FROM states SORT BY states.id ASC")  # Execute query
+    cur.execute("SELECT * FROM states ORDER BY id ASC")  # Execute query
     # Fetch results and print them. Rows are returned as tuples by default
     rows = cur.fetchall()
     for row in rows:
