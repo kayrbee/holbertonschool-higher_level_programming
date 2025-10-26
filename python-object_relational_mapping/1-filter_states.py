@@ -26,8 +26,9 @@ if __name__ == '__main__':
                          passwd=password, database=database, port=3306)
     cur = db.cursor()
 
-    # Execute query
-    cur.execute("SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC")
+    # Execute case-sensitive query
+    cur.execute(
+        "SELECT * FROM states WHERE name COLLATE SQL_Latin1_General_CP1_CS_AS LIKE 'N%' ORDER BY id ASC")
     # Fetch results and print them. Rows are returned as tuples by default
     rows = cur.fetchall()
     for row in rows:
