@@ -23,7 +23,7 @@ if __name__ == '__main__':
 
     # Connect to db
     db = MySQLdb.connect(host='localhost', user=user,
-                         passwd=password, database=database, port=3306)
+                         passwd=password, database=database, port=3306, charset="utf8")
     cur = db.cursor()
 
     # Execute case-sensitive query
