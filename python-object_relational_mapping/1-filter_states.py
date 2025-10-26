@@ -28,7 +28,7 @@ if __name__ == '__main__':
 
     # Execute case-sensitive query
     cur.execute(
-        "SELECT * FROM states WHERE name COLLATE SQL_Latin1_General_CP1_CS_AS LIKE 'N%' ORDER BY id ASC")
+        "SELECT * FROM states WHERE name LIKE BINARY 'N%' ORDER BY id ASC")
     # Fetch results and print them. Rows are returned as tuples by default
     rows = cur.fetchall()
     for row in rows:
