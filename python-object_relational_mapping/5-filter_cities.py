@@ -43,10 +43,8 @@ if __name__ == '__main__':
     cur.execute(query, (state,))
     # Fetch results and print them. Rows are returned as tuples by default
     rows = cur.fetchall()
-    for index, row in enumerate(rows):
-        if index > 0:
-            print(", ", end='')
-        print(row[0], end='')
+    cities = [row[0] for row in rows]
+    print(", ".join(cities))
     # Close the cursor and connection
     cur.close()
     db.close()
