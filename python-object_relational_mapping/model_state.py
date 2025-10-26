@@ -15,7 +15,7 @@ Your script should connect to a MySQL server running on localhost at port 3306
 WARNING: all classes who inherit from Base must be imported
 before calling Base.metadata.create_all(engine)
 """
-if __name__ == __main__:
+if __name__ == '__main__':
     """ Don't run on import"""
     from sqlalchemy import create_engine, Column, Integer, String
     from sqlalchemy.ext.declarative import declarative_base
@@ -23,6 +23,7 @@ if __name__ == __main__:
     Base = declarative_base()
 
     class State(Base):
+        """ State class defines the state table attributes"""
         __tablename__ = "states"
 
         id = Column(Integer, primary_key=True,
