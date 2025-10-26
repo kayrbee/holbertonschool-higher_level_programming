@@ -23,7 +23,6 @@ if __name__ == '__main__':
     username = sys.argv[1]
     passwd = sys.argv[2]
     db_name = sys.argv[3]
-    state = sys.argv[4]
 
     engine = create_engine(
         f"mysql+mysqldb://{username}:{passwd}@localhost:3306/{db_name}"
@@ -33,8 +32,9 @@ if __name__ == '__main__':
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    result = session.query(State).where(State.name == state).all()
+    result = session.query(State).where(
+        State.name == sys.argv[4]).order_by(State.id).all()
     if result:
-        print(f"{result.name} {result.id}")
+        print(f"{result.id}")
     else:
         print("Not found")
