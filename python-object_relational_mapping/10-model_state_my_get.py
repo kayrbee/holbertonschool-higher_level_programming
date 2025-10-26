@@ -32,9 +32,11 @@ if __name__ == '__main__':
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    result = session.query(State).where(
+    result = session.query(State).filter(
         State.name == sys.argv[4]).order_by(State.id).all()
     if result:
         print(f"{result.id}")
     else:
         print("Not found")
+
+    session.close()
