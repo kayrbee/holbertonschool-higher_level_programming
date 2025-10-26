@@ -47,7 +47,6 @@ if __name__ == '__main__':
         if index > 0:
             print(", ", end='')
         print(row[0], end='')
-    print('\n')
     # Close the cursor and connection
     cur.close()
     db.close()
