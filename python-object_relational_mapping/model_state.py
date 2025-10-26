@@ -15,25 +15,17 @@ Your script should connect to a MySQL server running on localhost at port 3306
 WARNING: all classes who inherit from Base must be imported
 before calling Base.metadata.create_all(engine)
 """
-if __name__ == '__main__':
-    """ Don't run on import"""
-    from sqlalchemy import create_engine, Column, Integer, String
-    from sqlalchemy.ext.declarative import declarative_base
 
-    Base = declarative_base()
+from sqlalchemy import Column, Integer, String
+from sqlalchemy.ext.declarative import declarative_base
 
-    class State(Base):
-        """ State class defines the state table attributes"""
-        __tablename__ = "states"
+Base = declarative_base()
 
-        id = Column(Integer, primary_key=True,
-                    autoincrement=True, nullable=False)
-        name = Column(String(128), nullable=False)
 
-        def __repr__(self):
-            return f"<State(id={self.id}, name='{self.name}')>"
+class State(Base):
+    """ 'State' class defines the state table attributes"""
+    __tablename__ = 'states'
 
-    engine = create_engine(
-        'mysql+mysqldb://{}:{}@localhost/{}'.format("root", "root", "my_db"), pool_pre_ping=True)
-
-    Base.metadata.create_all(engine)
+    id = Column(Integer, primary_key=True,
+                autoincrement=True, nullable=False)
+    name = Column(String(128), nullable=False)
