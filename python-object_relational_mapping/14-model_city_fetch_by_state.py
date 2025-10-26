@@ -35,7 +35,7 @@ if __name__ == '__main__':
     results = session.query(State, City).join(City,
                                               State.id == City.state_id).all()
 
-    for city, state in results:
+    for state, city in results:
         print(f"{state.name}: ({city.id}) {city.name}")
 
     session.close()
