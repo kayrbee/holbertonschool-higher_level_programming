@@ -22,13 +22,22 @@ if __name__ == '__main__':
     database = arguments[3]
 
     # Connect to db
-    db = MySQLdb.connect(host='localhost', user=user,
-                         passwd=password, database=database, port=3306, charset="utf8")
+    db = MySQLdb.connect(
+        host='localhost',
+        user=user,
+        passwd=password,
+        database=database,
+        port=3306,
+        charset="utf8")
     cur = db.cursor()
 
     # Execute case-sensitive query
-    cur.execute(
-        "SELECT * FROM states WHERE name LIKE BINARY 'N%' ORDER BY id ASC")
+    query = """
+        SELECT * FROM states
+        WHERE name LIKE BINARY %s
+        ORDER BY id ASC
+        """
+    cur.execute(query, ('N%',))
     # Fetch results and print them. Rows are returned as tuples by default
     rows = cur.fetchall()
     for row in rows:
