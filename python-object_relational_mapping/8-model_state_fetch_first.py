@@ -39,4 +39,4 @@ if __name__ == '__main__':
     if result:
         print(f"{result.id}: {result.name}")
     else:
-        print("No result found")
+        print("Nothing")
