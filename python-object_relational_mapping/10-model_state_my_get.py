@@ -27,15 +27,15 @@ if __name__ == '__main__':
     engine = create_engine(
         f"mysql+mysqldb://{username}:{passwd}@localhost:3306/{db_name}"
     )
-    Base.metadata.create_all(engine)
 
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    result = session.query(State).filter(
+    state = session.query(State).filter(
         State.name == sys.argv[4]).order_by(State.id).all()
-    if result:
-        print(f"{result.id}")
+    if state:
+        for row in state:
+            print(f"{row.id}")
     else:
         print("Not found")
 
