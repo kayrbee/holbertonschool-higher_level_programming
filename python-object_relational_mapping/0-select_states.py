@@ -22,9 +22,11 @@ db = MySQLdb.connect(host='localhost', user=user,
                      passwd=password, database=database, port=3306)
 cur = db.cursor()
 
-cur.execute("SELECT * FROM states SORT BY states.id ASC")  # Fetch records
+cur.execute("SELECT * FROM states SORT BY states.id ASC")  # Execute query
+# Fetch results and print them. Rows are returned as tuples by default
 rows = cur.fetchall()
 for row in rows:
-    for col in row:
-        print("%s," % col)
-    print("\n")
+    print(row)
+# Close the cursor and connection
+cur.close()
+db.close()
