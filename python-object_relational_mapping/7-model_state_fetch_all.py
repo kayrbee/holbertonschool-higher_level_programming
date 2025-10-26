@@ -11,15 +11,22 @@ The results must be displayed as they are in the example below
 """
 if __name__ == '__main__':
     from sqlalchemy import create_engine
-    from sqlalchemy.orm import Session
+    from sqlalchemy.orm import sessionmaker
     from model_state import Base, State
+    import sys
+
+    username = sys.argv[1]
+    passwd = sys.argv[2]
+    db_name = sys.argv[3]
 
     engine = create_engine(
-        'mysql+mysqldb://{}:{}@localhost/{}'.format("root", "root", "my_db"), pool_pre_ping=True)
+        f"mysql+mysqldb://{username}:{passwd}@localhost:3306/{db_name}"
+    )
     Base.metadata.create_all(engine)
 
-    session = Session(engine)
-    # HERE: no SQL query, only objects!
-    for state in session.query(State).order_by(State.id).all():
-        print("{}: {}".format(state.id, state.name))
-    session.close()
+    Session = sessionmaker(bind=engine)
+    session = Session()
+
+    result = session.query(State).order_by(State.id).all()
+    for row in result:
+        print(f"{row.id}: {row.name}")
