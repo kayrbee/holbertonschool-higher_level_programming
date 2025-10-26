@@ -27,7 +27,7 @@ if __name__ == '__main__':
     cur = db.cursor()
 
     # Execute query
-    cur.execute("SELECT * FROM states WHERE name LIKE 'L%' BY id ASC")
+    cur.execute("SELECT * FROM states WHERE name LIKE 'L%' ORDER BY id ASC")
     # Fetch results and print them. Rows are returned as tuples by default
     rows = cur.fetchall()
     for row in rows:
