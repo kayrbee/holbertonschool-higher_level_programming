@@ -33,7 +33,7 @@ if __name__ == '__main__':
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    result = session.query(State).where(State.name == state)
+    result = session.query(State).where(State.name == state).all()
     if result:
         print(f"{result.name} {result.id}")
     else:
