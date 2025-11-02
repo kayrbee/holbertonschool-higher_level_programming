@@ -3,7 +3,6 @@ const process = require('process');
 const args = process.argv;
 const a = Number(args[2]);
 const myErr = 'NaN';
-let result = 1;
 
 if (args.length < 3 || isNaN(a)) {
   console.log(myErr);
