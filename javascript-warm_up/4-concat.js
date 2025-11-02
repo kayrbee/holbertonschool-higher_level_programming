@@ -1,9 +1,9 @@
 #!/usr/bin/node
 const process = require('node:process');
-const myArgs = process.argv
+const myArgs = process.argv;
 const numArgs = +myArgs.length;
-const undef = 'undefined'
-const spacerString = 'is'
+const undef = 'undefined';
+const spacerString = 'is';
 
 if (numArgs === 2) {
   console.log(undef, spacerString, undef);
