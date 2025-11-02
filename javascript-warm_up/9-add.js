@@ -10,7 +10,7 @@ if (args.length < 3 || isNaN(a) || isNaN(b)) {
   process.exit(0);
 }
 
-function add(a, b) {
+function add (a, b) {
   return (a + b);
 }
 
