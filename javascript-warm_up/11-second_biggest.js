@@ -1,8 +1,8 @@
 #!/usr/bin/node
 const process = require('process');
-const args = process.argv;
+const args = process.argv.slice(2).map(Number);
 
-if (isNaN(Number(args[2])) || args.length <= 3) {
+if (args.some(isNaN) || args.length < 2) {
   console.log(0);
   process.exit(0);
 }
