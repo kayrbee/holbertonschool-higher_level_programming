@@ -1,4 +1,4 @@
 #!/usr/bin/node
-exports.add = function () {
-  console.log('My function is named');
+exports.add = function (a, b) {
+  return (a + b);
 }
