@@ -13,23 +13,22 @@ async function get_movies() {
         console.error(error.message);
     }
 }
-movies = await get_movies();
-num_movies = movies['count'];
-movie_titles = [];
 
-// Create an array of titles
-for (i = 0; i < num_movies; i++) {
-    movie = movies['results'][i];
-    movie_title = movie['title'];
-    movie_titles.push(movie_title);
-}
+const movies = await get_movies();
+const num_movies = movies['count'];
 
-// Loop over array of movie titles to add each movie to a li element
+
+// Fetch the list element only once
+const list = document.getElementById('list_movies');
+
+// Loop over movie data to find each movie title & add to a li element
 for (i = 0; i < num_movies; i++) {
+    let movie = movies['results'][i];
+    let movie_title = movie['title'];
+
     const list_item = document.createElement('li');
-    const node = document.createTextNode(movie_titles[i]);
+    const node = document.createTextNode(movie_title);
     list_item.appendChild(node);
 
-    const list = document.getElementById('list_movies');
     list.appendChild(list_item);
 }
