@@ -14,21 +14,32 @@ async function get_movies() {
     }
 }
 
-const movies = await get_movies();
-const num_movies = movies['count'];
+async function main() {
 
-
-// Fetch the list element only once
-const list = document.getElementById('list_movies');
-
-// Loop over movie data to find each movie title & add to a li element
-for (i = 0; i < num_movies; i++) {
-    let movie = movies['results'][i];
-    let movie_title = movie['title'];
-
-    const list_item = document.createElement('li');
-    const node = document.createTextNode(movie_title);
-    list_item.appendChild(node);
-
-    list.appendChild(list_item);
+    const movies = await get_movies();
+    
+    if (!movies) {
+        return (0);
+    }
+    
+    // const num_movies = movies['count'];
+    const num_movies = movies['results'].length;
+    
+    
+    // Fetch the list element only once
+    const list = document.getElementById('list_movies');
+    
+    // Loop over movie data to find each movie title & add to a li element
+    for (let i = 0; i < num_movies; i++) {
+        let movie = movies['results'][i];
+        let movie_title = movie['title'];
+        
+        const list_item = document.createElement('li');
+        const node = document.createTextNode(movie_title);
+        list_item.appendChild(node);
+        
+        list.appendChild(list_item);
+    }   
 }
+
+main();
