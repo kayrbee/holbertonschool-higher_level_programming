@@ -21,26 +21,29 @@ def generate_invitations(template: str, attendees):
     if not attendees:
         raise ValueError("Attendees list can't be empty")
 
-    for index, attendee in enumerate(attendees):
         # Check filepath exists
-        if os.path.exists(f'./{template}'):
+    if os.path.exists(f'./{template}'):
 
-            # Read from template file
-            with open(template, 'r', encoding="utf-8") as t:
-                template = t.read()
+        # Read from template file
+        with open(template, 'r', encoding="utf-8") as t:
+            template = t.read()
 
-                # Write to filename output_i.txt
-                output = f'output_{index}.txt'
+            # Write to filename output_i.txt
 
-                # Insert attendee name into placeholder
-                with open(output, 'w', encoding="utf-8") as o:
-                    name = attendee['name']
-                    print(name)
-                    formatted_name = template.replace(
-                        "{name}", name)
-                    print(formatted_name)
-                    o.write(formatted_name)
-                # Find {name} placeholder & replace with attendee name
+        for index, attendee in enumerate(attendees):
+            output = f'output_{index}.txt'
+
+            # Get attendee details
+            name = attendee['name']
+            event_title = attendee['event_title']
+            event_date = attendee['event_date']
+            event_location = attendee['event_location']
+
+            # Insert attendee details into template
+            with open(output, 'w', encoding="utf-8") as o:
+                invitation = template.replace(
+                    "{name}", name).replace("{event_title}", event_title).replace("{event_date}", event_date).replace("{event_location}", event_location)
+                o.write(invitation)
 
 
 generate_invitations('template.txt', attendees)
