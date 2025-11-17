@@ -27,7 +27,7 @@ def generate_invitations(template: str, attendees):
         # Get attendee details
         name = attendee['name']
         event_title = attendee['event_title']
-        event_date = attendee['event_date']
+        event_date = attendee['event_date'] or "event_date: N/A"
         event_location = attendee['event_location']
 
         try:
