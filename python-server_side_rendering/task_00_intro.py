@@ -10,12 +10,15 @@ def generate_invitations(template: str, attendees):
         logging.error("No data provided, no output files generated")
         return
     if not isinstance(template, str):
-        raise TypeError("Template must be string")
+        logging.error("Template must be string")
+        return
     if not isinstance(attendees, list):
-        raise TypeError("Attendees must be list")
+        logging.error("Attendees must be list")
+        return
 
     for index, attendee in enumerate(attendees):
         # Check if output file already exists
+        # output = f'output_{index}.txt'
         output = f'output_{index}.txt'
         if os.path.exists(output):
             continue
