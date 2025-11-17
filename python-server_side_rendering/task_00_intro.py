@@ -18,16 +18,20 @@ def generate_invitations(template: str, attendees):
         try:
             # Check if output file already exists
             if os.path.exists(f'./output_{index}.txt'):
+                print(f'Skipping output_{index}.txt because it exists already')
                 continue
             else:
                 output = f'output_{index}.txt'
 
+            for key in attendee:
+                if not attendee[key]:
+                    attendee[key] = f'{key}: N/A'
+
             # Get attendee details
-            missing_data_default = "N/A"
-            name = attendee['name'] or missing_data_default
-            event_title = attendee['event_title'] or missing_data_default
-            event_date = attendee['event_date'] or missing_data_default
-            event_location = attendee['event_location'] or missing_data_default
+            name = attendee['name']
+            event_title = attendee['event_title']
+            event_date = attendee['event_date']
+            event_location = attendee['event_location']
 
             # Insert attendee details into template
             with open(output, 'w', encoding="utf-8") as o:
