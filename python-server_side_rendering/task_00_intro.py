@@ -1,11 +1,14 @@
 import os
+import logging
 
 
 def generate_invitations(template: str, attendees):
     if not template:
-        exit("Template is empty, no output files generated")
+        logging.error("Template is empty, no output files generated")
+        return
     if not attendees:
-        exit("No data provided, no output files generated")
+        logging.error("No data provided, no output files generated")
+        return
     if not isinstance(template, str):
         raise TypeError("Template must be string")
     if not isinstance(attendees, list):
