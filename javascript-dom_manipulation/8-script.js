@@ -8,7 +8,6 @@ async function getTranslation () {
     const translation = await response.json();
     const hello = document.getElementById('hello');
     hello.innerHTML = translation.hello;
-    // return (translation);
   } catch (error) {
     console.error(error.message);
   }
