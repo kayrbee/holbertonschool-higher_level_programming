@@ -15,22 +15,22 @@ def generate_invitations(template: str, attendees):
         raise TypeError("Attendees must be list")
 
     for index, attendee in enumerate(attendees):
+        # Check if output file already exists
+        output = f'output_{index}.txt'
+        if os.path.exists(output):
+            continue
+
+        for key in attendee:
+            if not attendee[key]:
+                attendee[key] = f'{key}: N/A'
+
+        # Get attendee details
+        name = attendee['name']
+        event_title = attendee['event_title']
+        event_date = attendee['event_date']
+        event_location = attendee['event_location']
+
         try:
-            # Check if output file already exists
-            output = f'output_{index}.txt'
-            if os.path.exists(output):
-                continue
-
-            for key in attendee:
-                if not attendee[key]:
-                    attendee[key] = f'{key}: N/A'
-
-            # Get attendee details
-            name = attendee['name']
-            event_title = attendee['event_title']
-            event_date = attendee['event_date']
-            event_location = attendee['event_location']
-
             # Insert attendee details into template
             with open(output, 'w', encoding="utf-8") as o:
                 invitation = template.replace(
