@@ -16,7 +16,7 @@ def generate_invitations(template: str, attendees):
         logging.error("Attendees must be list")
         return
 
-    for index, attendee in enumerate(attendees):
+    for index, attendee in enumerate(attendees, start=1):
         # Check if output file already exists
         # output = f'output_{index}.txt'
         output = f'output_{index}.txt'
