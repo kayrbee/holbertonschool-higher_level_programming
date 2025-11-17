@@ -1,0 +1,1 @@
+Answers to the questions about the behaviour of various variables in Python
