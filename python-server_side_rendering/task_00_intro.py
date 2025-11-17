@@ -17,11 +17,9 @@ def generate_invitations(template: str, attendees):
     for index, attendee in enumerate(attendees):
         try:
             # Check if output file already exists
-            if os.path.exists(f'./output_{index}.txt'):
-                print(f'Skipping output_{index}.txt because it exists already')
+            output = f'output_{index}.txt'
+            if os.path.exists(output):
                 continue
-            else:
-                output = f'output_{index}.txt'
 
             for key in attendee:
                 if not attendee[key]:
