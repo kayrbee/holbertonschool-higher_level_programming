@@ -1,5 +1,3 @@
-#!/usr/bin/node
-
 async function getTranslation () {
   try {
     const response = await fetch('https://hellosalut.stefanbohacek.com/?lang=fr');
@@ -8,12 +6,14 @@ async function getTranslation () {
     }
 
     const translation = await response.json();
-    return (translation);
+    const hello = document.getElementById('hello');
+    hello.innerHTML = translation.hello;
+    // return (translation);
   } catch (error) {
     console.error(error.message);
   }
 }
 
-const translation = await getTranslation();
-const hello = document.getElementById('hello');
-hello.innerHTML = translation.hello;
+document.addEventListener("DOMContentLoaded", (_event) => {
+  getTranslation()
+})

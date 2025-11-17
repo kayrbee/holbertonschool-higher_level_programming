@@ -1,4 +1,3 @@
-#!/usr/bin/node
 const target = document.getElementById('update_header');
 
 function updateHeaderText () {

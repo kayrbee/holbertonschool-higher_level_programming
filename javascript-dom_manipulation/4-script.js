@@ -1,5 +1,3 @@
-#!/usr/bin/node
-
 const list = document.querySelector('.my_list');
 const target = document.getElementById('add_item');
 

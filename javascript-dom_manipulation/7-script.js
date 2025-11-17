@@ -1,5 +1,3 @@
-#!/usr/bin/node
-
 async function getMovies () {
   try {
     const response = await fetch('https://swapi-api.hbtn.io/api/films/?format=json');

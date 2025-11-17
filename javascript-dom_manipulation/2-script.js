@@ -1,4 +1,3 @@
-#!/usr/bin/node
 const header = document.querySelector('header');
 const target = document.getElementById('red_header');
 
