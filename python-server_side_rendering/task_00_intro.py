@@ -37,4 +37,4 @@ def generate_invitations(template: str, attendees):
                     "{name}", name).replace("{event_title}", event_title).replace("{event_date}", event_date).replace("{event_location}", event_location)
                 o.write(invitation)
         except Exception as e:
-            print(f'Error - {e}')
+            logging.error(f'Error writing to file {output} - {e}')
