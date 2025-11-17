@@ -13,6 +13,8 @@ async function getTranslation () {
   }
 }
 
+// Wait for the DOM to finish loading before calling the async function,
+// otherwise the <div id='hello'> element is referenced before it exists
 document.addEventListener("DOMContentLoaded", (_event) => {
   getTranslation()
 })

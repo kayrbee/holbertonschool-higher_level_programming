@@ -12,5 +12,6 @@ async function getCharName () {
   }
 }
 
-// Version 3 solution
+// Version 3 solution - update element inside async fn to avoid 
+// an issue with a top-level await declaration
 getCharName()
