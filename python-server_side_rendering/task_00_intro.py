@@ -23,12 +23,12 @@ def generate_invitations(template: str, attendees):
         # Handle empty values in key
         for key in attendee:
             if not attendee[key]:
-                attendee[key] = f'{key}: N/A'
+                attendee[key] = 'N/A'
 
         # Handle missing keys
         event_keys = ['name', 'event_title', 'event_date', 'event_location']
         for key in event_keys:
-            attendee.setdefault(key, f'{key}: N/A')
+            attendee.setdefault(key, 'N/A')
 
         # Get attendee details
         name = attendee['name']
